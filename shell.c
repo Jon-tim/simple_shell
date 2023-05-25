@@ -1,48 +1,25 @@
 #include "shell.h"
 /**
  * main - Entry point
- * @argc: argument count
- * @argv: argument vector
- * Return: 0 on success
+ * Return: Always 0 (Success)
  */
-int main(int argc, char **argv)
+int main(void)
 {
-	char *input = NULL;
-	size_t input_length = 0;
-	ssize_t bytes_read;
-	char line[MAX_INPUT_LENGTH];
+	char *command;
 
-	if (argc == 2)
+	while (1)
 	{
-		FILE *file = fopen(argv[1], "r");
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, "simple_shell$ ", 14);
+			fflush(stdout);
+		}
+		command = read_command();
 
-		if (file == NULL)
-		{
-			perror("Error opening file");
-			return (EXIT_FAILURE);
-		}
-		while (fgets(line, sizeof(line), file))
-		{
-			line[strcspn(line, "\n")] = '\0';
-			execute_command(line);
-		}
-		fclose(file);
-	}
-	else
-	{
-		while (1)
-		{
-			printf("#cisfun$  ");
-			bytes_read = getline(&input, &input_length, stdin);
-			if (bytes_read == -1)
-				break;
-			input[strcspn(input, "\n")] = '\0';
-			if (_strlen(input) == 0)
-				continue;
-			execute_semicolon_command(input);
-		}
-		free(input);
-		return (0);
+		if (command != NULL && *command != '\0')
+			execute_command(command);
+
+		free(command);
 	}
 	return (0);
 }
