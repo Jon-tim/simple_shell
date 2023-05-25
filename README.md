@@ -25,22 +25,23 @@ This program was written entirely in C Language.
 
 ## Features
 
-* This program displays a prompt and waits that the user types a command. A command line always ends with a new line (when user push ENTER key).
+* This program displays a prompt and waits for the user to types a command. A command line always ends with a new line (when user push ENTER key).
 * The prompt is displayed again each time a command has been executed.
-* When the user enters exit, the shell will end.
 * The user could stop the program using Ctrl+D (end of file).
 * The shell handles the command lines with arguments and pathways.
 * The program prints the current enviroment when the user types env.
+* The shell handles the setenv and unsetenv builtin commands
 * This program executes the most common shell commands as ls, cd, pwd, rm, cp, mkdir, rmdir, exit, env, etc... with arguments.
 * If an executable cannot be found, It prints an error message and displays the prompt again.
 * This Shell supports commentaries using #,
 * The Shell Handle the $? variable and $$ variable.
 * This shell support shell logical operators as && or ||, and commands separator ;.
 * The shell handle the alias builtin command
+* When the user enters exit, the shell will end.
 
 ## Compilation
 
-### Your shell will be compiled this way:
+### This shell is compiled this way:
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
