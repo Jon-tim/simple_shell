@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
 		if (file == NULL)
 		{
-			perror("Error opening file");
+			printf("%s:0: Can't open argv[1]\n", argv[0], argv[1]);
 			return (EXIT_FAILURE);
 		}
 		while (fgets(line, sizeof(line), file))
