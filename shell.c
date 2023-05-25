@@ -32,7 +32,8 @@ int main(int argc, char **argv)
 	{
 		while (1)
 		{
-			printf("#cisfun$  ");
+			write(STDOUT_FILENO, "$ ", 2);
+			fflush(stdout);
 			bytes_read = getline(&input, &input_length, stdin);
 			if (bytes_read == -1)
 				break;
