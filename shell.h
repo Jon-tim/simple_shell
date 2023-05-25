@@ -12,5 +12,7 @@
 void print_error(const char *error_message);
 void execute_command(char *command);
 char *read_command();
+int is_exit_command(char *command);
+
 #endif
 

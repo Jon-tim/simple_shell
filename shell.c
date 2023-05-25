@@ -17,7 +17,11 @@ int main(void)
 		command = read_command();
 
 		if (command != NULL && *command != '\0')
+		{
+			if (is_exit_command(command))
+				exit(EXIT_SUCCESS);
 			execute_command(command);
+		}
 
 		free(command);
 	}
