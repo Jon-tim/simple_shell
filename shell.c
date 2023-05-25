@@ -30,17 +30,28 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		while (1)
+		if (isatty(STDIN_FILENO))
 		{
-			write(STDOUT_FILENO, "$ ", 2);
-			fflush(stdout);
-			bytes_read = getline(&input, &input_length, stdin);
-			if (bytes_read == -1)
-				break;
-			input[strcspn(input, "\n")] = '\0';
-			if (_strlen(input) == 0)
-				continue;
-			execute_semicolon_command(input);
+			while (1)
+			{
+				write(STDOUT_FILENO, "$ ", 2);
+				fflush(stdout);
+				bytes_read = getline(&input, &input_length, stdin);
+				if (bytes_read == -1)
+					break;
+				input[strcspn(input, "\n")] = '\0';
+				if (_strlen(input) == 0)
+					continue;
+				execute_semicolon_command(input);
+			}
+		}
+		else
+		{
+			while (fgrts(line, sizeof(line), stdin))
+			{
+				line[strcspn(line, "\n")] = '\0';
+				execute_command(line);
+			}
 		}
 		free(input);
 		return (0);
