@@ -19,7 +19,10 @@ int main(void)
 		if (command != NULL && *command != '\0')
 		{
 			if (is_exit_command(command))
+			{
+				free(command);
 				exit(EXIT_SUCCESS);
+			}
 			execute_command(command);
 		}
 
