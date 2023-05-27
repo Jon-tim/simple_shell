@@ -3,7 +3,7 @@
  * main - Entry point
  * @argc: Number of arguments
  * @argv: argument vector
- * Return: Always 0 (Success)
+ * Return: Always 0 (Success).
  */
 int main(int argc, char **argv)
 {
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 /**
  * execute_from_file - Executes commands from a file
  * @filename: Name of the file
- * @program_name: Name of the program
+ * @program_name: Name of the program.
  */
 void execute_from_file(const char *filename, const char *program_name)
 {
@@ -63,7 +63,7 @@ void execute_from_file(const char *filename, const char *program_name)
 
 /**
  * execute_interactive - Executes commands from the terminal
- * @argc: Number of arguments
+ * @argc: Number of arguments.
  */
 void execute_interactive(int argc)
 {
