@@ -80,6 +80,7 @@ void execute_command(char *command)
 				fprintf(stderr, "%s%s%s", error_message_1, path_command, error_message_2);
 				exit(2);
 			}
+			free(path_command);
 		}
 		else if (child_pid < 0)
 		{
@@ -92,7 +93,6 @@ void execute_command(char *command)
 				waitpid(child_pid, &status, WUNTRACED);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
-		free(path_command);
 	}
 	else
 		fprintf(stderr, "%s: %s: command not found\n", __FILE__, arguments[0]);
@@ -175,8 +175,8 @@ void handle_external(int argc, char *command)
 				return;
 			}
 		}
+		free(command_copy);
 		execute_command(command);
 	}
-	free(command_copy);
 }
 
