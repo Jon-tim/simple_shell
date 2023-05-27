@@ -153,7 +153,6 @@ void handle_external(int argc, char *command)
 	(void)argc;
 	/*AliasList *list = create_alias_list();*/
 	parse_arguments(command_copy, arguments);
-	free(command_copy);
 	if (arguments[0] != NULL)
 	{
 		for (i = 0; i < num_builtins; i++)
