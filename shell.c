@@ -51,7 +51,7 @@ void execute_from_file(const char *filename, const char *program_name)
 	if (file_fd == -1)
 	{
 		fprintf(stderr, "%s: 0: Can't open %s\n", program_name, filename);
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 
 	while ((bytes_read = read(file_fd, command, sizeof(command))) > 0)
