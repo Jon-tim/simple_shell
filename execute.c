@@ -58,12 +58,11 @@ void execute_command(char *command)
 {
 	int status;
 	pid_t child_pid;
-	char *arguments[MAX_ARGUMENTS];
-	char *path_command;
+	char *arguments[MAX_ARGUMENTS],	*path_command;
 
 	handle_comments(command);
 	parse_arguments(command, arguments);
-	if (arguments[0][0] == '/')
+	if (access(arguments[0], X_OK) == 0)
 		path_command = strdup(arguments[0]);
 	else
 		path_command = search_path(arguments[0]);
@@ -78,15 +77,13 @@ void execute_command(char *command)
 				const char *error_message_2 = "': No such file or directory\n";
 
 				fprintf(stderr, "%s%s%s", error_message_1, path_command, error_message_2);
+				free(path_command);
 				exit(2);
 			}
 			free(path_command);
 		}
 		else if (child_pid < 0)
-		{
-			printf("Fork failed\n");
 			exit(1);
-		}
 		else
 		{
 			do {
@@ -96,6 +93,7 @@ void execute_command(char *command)
 	}
 	else
 		fprintf(stderr, "%s: %s: command not found\n", __FILE__, arguments[0]);
+	free(path_command);
 }
 
 /**
@@ -151,8 +149,9 @@ void handle_external(int argc, char *command)
 	int num_builtins = sizeof(builtin_commands) / sizeof(builtin_commands[0]), i;
 	char *arguments[MAX_ARGUMENTS];
 	char *command_copy = strdup(command);
-	AliasList *list = create_alias_list();
 
+	(void)argc;
+	/*AliasList *list = create_alias_list();*/
 	parse_arguments(command_copy, arguments);
 	if (arguments[0] != NULL)
 	{
@@ -170,8 +169,10 @@ void handle_external(int argc, char *command)
 					handle_cd(arguments);
 				else if (strcmp(arguments[0], "env") == 0)
 					handle_env();
-				else if (strcmp(arguments[0], "alias") == 0)
-					alias_command(list, argc, arguments);
+				/*
+				 * else if (strcmp(arguments[0], "alias") == 0)
+					*alias_command(list, argc, arguments);
+					*/
 				return;
 			}
 		}
