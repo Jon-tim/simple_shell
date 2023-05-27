@@ -72,17 +72,17 @@ void execute_interactive(int argc)
 	ssize_t characters_read;
 
 	const char prompt[] = "($) ";
-	const char newline[] = "\n";
 
 	while (1)
 	{
-		write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
-		fflush(stdout);
-
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, prompt, sizeof(prompt) - 1);
+			fflush(stdout);
+		}
 		characters_read = getline(&command, &bufsize, stdin);
 		if (characters_read == -1)
 		{
-			write(STDOUT_FILENO, newline, sizeof(newline) - 1);
 			break;
 		}
 		handle_external(argc, command);
