@@ -2,7 +2,7 @@
 /**
  * parse_arguments - parses arguments
  * @command: command to parse
- * @arguments: arguments to parse
+ * @arguments: arguments to parse.
  */
 void parse_arguments(char *command, char *arguments[])
 {
@@ -21,7 +21,7 @@ void parse_arguments(char *command, char *arguments[])
 
 /**
  * handle_builtin - handles builtins
- * @arguments: arguments to handle
+ * @arguments: arguments to handle.
  */
 void handle_builtin(char *arguments[])
 {
@@ -52,7 +52,7 @@ void handle_builtin(char *arguments[])
 
 /**
  * execute_command - executes a command
- * @command: command to handle
+ * @command: command to handle.
  */
 void execute_command(char *command)
 {
@@ -101,7 +101,7 @@ void execute_command(char *command)
 /**
  * search_path - searches for a command in the PATH
  * @command: command to search for
- * Return: path of command if found, NULL if not
+ * Return: path of command if found, NULL if not.
  */
 char *search_path(char *command)
 {
@@ -143,7 +143,7 @@ char *search_path(char *command)
 /**
  * handle_external - handles external commands
  * @argc: number of arguments
- * @command: command to handle
+ * @command: command to handle.
  */
 void handle_external(int argc, char *command)
 {
