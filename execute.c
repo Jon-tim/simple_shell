@@ -147,11 +147,10 @@ void handle_external(int argc, char *command)
 {
 	char *builtin_commands[] = {"exit", "setenv", "unsetenv", "cd", "env"};
 	int num_builtins = sizeof(builtin_commands) / sizeof(builtin_commands[0]), i;
-	char *arguments[MAX_ARGUMENTS];
-	char *command_copy = strdup(command);
+	char *arguments[MAX_ARGUMENTS], command_copy[MAX_COMMMAND_LENGTH];
 
 	(void)argc;
-	/*AliasList *list = create_alias_list();*/
+	strcpy(command_copy, command);
 	parse_arguments(command_copy, arguments);
 	if (arguments[0] != NULL)
 	{
@@ -176,7 +175,6 @@ void handle_external(int argc, char *command)
 				return;
 			}
 		}
-		free(command_copy);
 		execute_command(command);
 	}
 }
