@@ -20,24 +20,9 @@
 
 extern char **environ;
 
-typedef struct Alias
-{
-	char name[MAX_ALIAS_LENGTH];
-	char value[MAX_VALUE_LENGTH];
-	struct Alias *next;
-} Alias;
-
-typedef struct AliasList
-{
-	Alias *head;
-} AliasList;
-
-AliasList *create_alias_list();
 void print_alias(Alias *alias);
 void print_aliases(AliasList *list);
-Alias *find_alias(AliasList *list, char *name);
 void add_alias(AliasList *list, char *name, char *value);
-void alias_command(AliasList *list, int argc, char **argv);
 char *search_path(char *command);
 void parse_arguments(char *command, char *arguments[]);
 void handle_builtin(char *arguments[]);
