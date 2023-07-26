@@ -3,7 +3,7 @@
 ## Description
 
 This project is an implementation of the shell created as a Milestone Project for the C code at ALX Africa Software Engineering.
-The shell is a project in the first trimester, that helps student to understand the advanced concepts behind the shell program include process, system call, bit manipulation, file management, error handling etc...
+The shell is a project in the first trimester, that helps student to understand the advanced concepts behind the shell program include process, system call, bit manipulation, file management, error handling etc....
 Shell is a simple UNIX command interpreter that replicates functionalities of the simple shell (sh).
 This program was written entirely in C Language.
 
