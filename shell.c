@@ -74,7 +74,6 @@ void execute_interactive(int argc)
 			break;
 		}
 		handle_external(argc, command);
-		free(command);
 	}
 
 	free(command);
