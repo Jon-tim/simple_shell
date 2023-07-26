@@ -20,9 +20,6 @@
 
 extern char **environ;
 
-void print_alias(Alias *alias);
-void print_aliases(AliasList *list);
-void add_alias(AliasList *list, char *name, char *value);
 char *search_path(char *command);
 void parse_arguments(char *command, char *arguments[]);
 void handle_builtin(char *arguments[]);
